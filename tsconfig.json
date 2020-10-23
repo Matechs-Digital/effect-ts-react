@@ -15,7 +15,12 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["./src/*"],
+      "@components/*": ["./components/*"]
+    }
   },
   "include": [
     "src/**/*.ts",

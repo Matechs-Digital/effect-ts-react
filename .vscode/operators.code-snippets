@@ -11,7 +11,7 @@
   },
   "Operators Import": {
     "prefix": "op",
-    "body": ["import {} from \"@effect-ts/core/Operators\""],
+    "body": ["import {} from \"@app/prelude\""],
     "description": "Operators Import"
   },
   "Gen Function": {

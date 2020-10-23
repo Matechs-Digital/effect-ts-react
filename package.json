@@ -4,10 +4,9 @@
   "license": "MIT",
   "author": "Michael Arnaldi",
   "scripts": {
-    "start": "node -r ts-node/register src/index.ts",
-    "test": "jest",
-    "migration:create": "node-pg-migrate create",
-    "type-check": "tsc --noEmit"
+    "start": "next dev",
+    "build": "next build",
+    "serve": "next start"
   },
   "dependencies": {
     "@effect-ts/core": "^0.7.6",

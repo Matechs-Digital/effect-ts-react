@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "downlevelIteration": true,
+    "lib": ["ES2019", "DOM"],
+    "target": "ES5",
+    "strict": true,
+    "outDir": "lib",
+    "noErrorTruncation": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve"
+  },
+  "include": [
+    "src/**/*.ts",
+    "test/**/*.ts",
+    "scripts/**/*.ts",
+    "migrations/**/*.ts",
+    "pages/**/*.tsx",
+    "pages/**/*.ts",
+    "components/**/*.tsx",
+    "components/**/*.ts",
+    "articles/**/*.ts",
+    "src/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
+}

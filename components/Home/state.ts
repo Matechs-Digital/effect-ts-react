@@ -1,3 +1,4 @@
+import {} from "@app/prelude"
 import * as As from "@effect-ts/core/Async"
 import * as Assoc from "@effect-ts/core/Classic/Associative"
 import * as Ord from "@effect-ts/core/Classic/Ord"
@@ -5,6 +6,7 @@ import { tag } from "@effect-ts/core/Has"
 import * as Sy from "@effect-ts/core/Sync"
 import * as Sl from "@effect-ts/core/Sync/Layer"
 import type { _A, _E } from "@effect-ts/core/Utils"
+import { matchTag } from "@effect-ts/core/Utils"
 import { observable } from "mobx"
 
 import { Github } from "../../src/github"
@@ -43,33 +45,32 @@ export const makeHomeSate = Sy.gen(function* (_) {
   })
 
   function propagateExit(ex: As.Exit<_E<ReturnType<typeof getOrg>>, readonly Org[]>) {
-    switch (ex._tag) {
-      case "Interrupt": {
-        state.current = new Interrupted()
-        return
-      }
-      case "Failure": {
-        state.current = new Error(ex.e)
-        return
-      }
-      case "Success": {
-        state.current = new Done(ex.a)
-        return
-      }
-    }
+    ex["|>"](
+      matchTag({
+        Success: ({ a }) => {
+          state.current = new Done(a)
+        },
+        Failure: ({ e }) => {
+          state.current = new Error(e)
+        },
+        Interrupt: () => {
+          state.current = new Interrupted()
+        }
+      })
+    )
   }
 
+  const maxNumber = Assoc.fold(Assoc.join(Ord.ordNumber))(0)
+
   function getLastId() {
-    switch (state.current._tag) {
-      case "Done": {
-        return Assoc.fold(Assoc.join(Ord.ordNumber))(0)(
-          state.current.value.map((_) => _.id)
-        )
-      }
-      default: {
-        return 0
-      }
-    }
+    return state.current["|>"](
+      matchTag(
+        {
+          Done: ({ value }) => maxNumber(value.map((_) => _.id))
+        },
+        () => 0
+      )
+    )
   }
 
   function next() {

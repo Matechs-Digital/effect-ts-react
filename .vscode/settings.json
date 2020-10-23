@@ -29,7 +29,6 @@
     "comments": false,
     "strings": false
   },
-
   "editor.acceptSuggestionOnCommitCharacter": true,
   "editor.acceptSuggestionOnEnter": "on",
   "editor.quickSuggestionsDelay": 10,

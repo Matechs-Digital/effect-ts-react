@@ -3,7 +3,9 @@ import { tag } from "@effect-ts/core/Has"
 import * as Sy from "@effect-ts/core/Sync"
 import * as Sl from "@effect-ts/core/Sync/Layer"
 import type { _A } from "@effect-ts/core/Utils"
-import { _E, matchTag } from "@effect-ts/core/Utils"
+import { _E, matchTag, onAdtElement } from "@effect-ts/core/Utils"
+import type { Option } from "@effect-ts/system/Option"
+import { none, some } from "@effect-ts/system/Option"
 import { observer } from "mobx-react"
 import React from "react"
 
@@ -46,9 +48,11 @@ export const makeHome = Sy.gen(function* (_) {
   return {
     HomeView: observer(() => {
       React.useEffect(() => {
-        if (state.current._tag === "Init") {
-          return next()
-        }
+        state.current["|>"](
+          onAdtElement("Init", () => {
+            next()
+          })
+        )
       }, [])
 
       return state.current["|>"](

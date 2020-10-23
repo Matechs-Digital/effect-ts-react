@@ -1,5 +1,4 @@
 import {} from "@app/prelude"
-import * as As from "@effect-ts/core/Async"
 import { tag } from "@effect-ts/core/Has"
 import * as Sy from "@effect-ts/core/Sync"
 import * as Sl from "@effect-ts/core/Sync/Layer"

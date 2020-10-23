@@ -36,8 +36,8 @@ export const makeHome = Sy.gen(function* (_) {
     return <div>Loading</div>
   }
 
-  function Error<E>(p: { e: E }) {
-    return <div>Error: {JSON.stringify(p.e)}</div>
+  function Error({ message }: { message: string }) {
+    return <div>Error: {message}</div>
   }
 
   function Interrupted() {
@@ -55,7 +55,7 @@ export const makeHome = Sy.gen(function* (_) {
       return state.current["|>"](
         matchTag({
           Done: ({ value }) => <Done orgs={value} />,
-          Error: ({ error }) => <Error e={error} />,
+          Error: ({ error }) => <Error message={JSON.stringify(error)} />,
           Init: () => <Init />,
           Interrupted: () => <Interrupted />,
           Loading: () => <Loading />

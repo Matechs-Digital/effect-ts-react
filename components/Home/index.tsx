@@ -11,28 +11,9 @@ import type { Org } from "../../src/model"
 import * as State from "./state"
 
 export const makeHome = Sy.gen(function* (_) {
-  const { getOrg } = yield* _(Github)
-  const { state } = yield* _(State.HomeState)
-
-  function propagate(ex: As.Exit<_E<ReturnType<typeof getOrg>>, readonly Org[]>) {
-    switch (ex._tag) {
-      case "Interrupt": {
-        state.current = new State.Interrupted()
-        return
-      }
-      case "Failure": {
-        state.current = new State.Error(ex.e)
-        return
-      }
-      case "Success": {
-        state.current = new State.Done(ex.a)
-        return
-      }
-    }
-  }
+  const { next, state } = yield* _(State.HomeState)
 
   function Init() {
-    React.useEffect(() => As.runAsync(getOrg(), propagate), [])
     return <div>Init</div>
   }
 
@@ -63,6 +44,11 @@ export const makeHome = Sy.gen(function* (_) {
 
   return {
     HomeView: observer(() => {
+      React.useEffect(() => {
+        if (state.current._tag === "Init") {
+          return next()
+        }
+      }, [])
       switch (state.current._tag) {
         case "Done": {
           return <Done orgs={state.current.value} />

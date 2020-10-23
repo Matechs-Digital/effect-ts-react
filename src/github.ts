@@ -13,7 +13,7 @@ export const makeGithub = Sy.gen(function* (_) {
   return {
     getOrg: (from = 0) =>
       As.gen(function* (_) {
-        const res: unknown = yield* _(
+        const res = yield* _(
           getJson(`https://api.github.com/organizations?since=${from}`)
         )
 

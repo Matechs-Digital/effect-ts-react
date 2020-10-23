@@ -35,7 +35,7 @@ export const makeHttp = Sy.gen(function* (_) {
           As.fromPromiseMap((u) => new HttpError(u))(() => fetch(url))
         )
 
-        const json = yield* _(
+        const json: unknown = yield* _(
           As.fromPromiseMap((u) => new JsonError(u))(() => res.json())
         )
 

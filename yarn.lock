@@ -1228,27 +1228,27 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@effect-ts/core@^0.7.3":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@effect-ts/core/-/core-0.7.3.tgz#b2a4ac6bbe15788de2ad28da3bf6895a60a2ca93"
-  integrity sha512-aBuYlcM3joxKVC6/9hAFJbMRlmcsur3rTW0zzBD/Qv7xVy51UOKXXiirhXMbw+bPen1mGFMrjmuxOBDdjyEjxg==
+"@effect-ts/core@^0.7.6":
+  version "0.7.6"
+  resolved "https://registry.yarnpkg.com/@effect-ts/core/-/core-0.7.6.tgz#d9354640ad2fb757dd88187891f383bba4f8a39a"
+  integrity sha512-r0yT9Hpf+3Dc8e74C68g03ddHEjccdiGgKf1Vrl5QPlAMj5kHGzT7N2jUAIcZBidOfb4C71oKnQ3ncJCbBOyIA==
   dependencies:
     "@effect-ts/system" "^0.5.1"
 
-"@effect-ts/monocle@^0.6.3":
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/@effect-ts/monocle/-/monocle-0.6.3.tgz#2586f9309603608100d6b821352712d8363af794"
-  integrity sha512-eAd1J2iVyE/46Qr8+GQOVRhEHN06xxFjOoCW1TI7HlgctjAkC2A0F7buHB7T/QZbzXIFIs5SQiqZXX4dtk9FvQ==
+"@effect-ts/monocle@^0.6.6":
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/@effect-ts/monocle/-/monocle-0.6.6.tgz#ece74901a69b2433ef4b417f1a324b5ce14d0eff"
+  integrity sha512-IXzqmv7obwEaSIu1FgQwUHOybNN94zf0B//LzdPh1IJavz468qelOSe2+gaNPZXClVolkpjrtjXySBRvP2LA8A==
   dependencies:
-    "@effect-ts/core" "^0.7.3"
+    "@effect-ts/core" "^0.7.6"
 
-"@effect-ts/morphic@^0.5.3":
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/@effect-ts/morphic/-/morphic-0.5.3.tgz#7c49d9297ca438a20a392a87e6bfe8a80b9e08f0"
-  integrity sha512-spL1gteiKl1e6vFCFKVKxt4eaOXAeXSRk/VELPriQ2NrivO+5hW7Lfm+EKjNAWHo16S851zGC2+zM4wgfYEzpQ==
+"@effect-ts/morphic@^0.5.6":
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/@effect-ts/morphic/-/morphic-0.5.6.tgz#ce4bfafa04891d8f7bf23f02ead61e3066ff7a93"
+  integrity sha512-T4gkllF++jltCtgGnS5m6pEce7GKd19fU7HydFg+uw8qVawTH23MUDA9YNnXvyUTwDPhRqp7pYIC2YUA+tX6nQ==
   dependencies:
-    "@effect-ts/core" "^0.7.3"
-    "@effect-ts/monocle" "^0.6.3"
+    "@effect-ts/core" "^0.7.6"
+    "@effect-ts/monocle" "^0.6.6"
 
 "@effect-ts/system@^0.5.1":
   version "0.5.1"

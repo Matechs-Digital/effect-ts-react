@@ -62,8 +62,7 @@ export const makeHomeSate = Sy.gen(function* (_) {
   function getLastId() {
     switch (state.current._tag) {
       case "Done": {
-        return Assoc.fold(Assoc.join(Ord.ordNumber))(
-          0,
+        return Assoc.fold(Assoc.join(Ord.ordNumber))(0)(
           state.current.value.map((_) => _.id)
         )
       }

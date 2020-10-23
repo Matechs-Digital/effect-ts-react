@@ -6,7 +6,7 @@ import type { _A, _E } from "@effect-ts/core/Utils"
 import { observer } from "mobx-react"
 import React from "react"
 
-import { Github, LiveGithub } from "../../src/github"
+import { LiveGithub } from "../../src/github"
 import type { Org } from "../../src/model"
 import * as State from "./state"
 

@@ -19,9 +19,6 @@ jobs:
         run: |
           npm install -g yarn
           yarn
-          docker pull postgres:9.6.19-alpine
-          docker pull testcontainers/ryuk:0.3.0
-          yarn type-check
-          yarn test
+          yarn build
         env:
           CI: "true"

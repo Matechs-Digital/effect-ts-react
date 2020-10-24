@@ -75,5 +75,5 @@ export interface Home extends _A<typeof makeHome> {}
 export const Home = tag<Home>()
 
 export const LiveHome = Sl.fromSync(Home)(makeHome)
-  ["<<<"](State.LiveHomeState)
-  ["<<<"](LiveGithub)
+  ["<+<"](State.LiveHomeState)
+  ["<+<"](LiveGithub)

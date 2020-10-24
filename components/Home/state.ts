@@ -85,7 +85,8 @@ export const makeHomeSate = Sy.gen(function* (_) {
 
   return {
     state,
-    next
+    next,
+    propagateExit
   }
 })
 

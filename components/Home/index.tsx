@@ -25,6 +25,15 @@ export const makeHome = Sy.gen(function* (_) {
           {orgs.map((o) => (
             <div key={o.id}>{o.login}</div>
           ))}
+          <div style={{ marginTop: "1em" }}>
+            <button
+              onClick={() => {
+                next()
+              }}
+            >
+              Next
+            </button>
+          </div>
         </>
       )
     }

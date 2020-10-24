@@ -4,7 +4,7 @@ import * as Sl from "@effect-ts/core/Sync/Layer"
 
 import { Home, LiveHome } from "../components/Home"
 
-export const HomePage = Sy.accessService(Home)((_) => _.HomeView)
+export const HomePage = Sy.readService(Home)
   ["|>"](Sl.provideSyncLayer(LiveHome))
   ["|>"](Sy.run)
 

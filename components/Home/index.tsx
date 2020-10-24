@@ -50,27 +50,25 @@ export const makeHome = Sy.gen(function* (_) {
     )
   }
 
-  return {
-    HomeView: observer(() => {
-      React.useEffect(() => {
-        state.current["|>"](
-          onAdtElement("Init", () => {
-            next()
-          })
-        )
-      }, [])
-
-      return state.current["|>"](
-        matchTag({
-          Done: ({ value }) => <Done orgs={value} />,
-          Error: ({ error }) => <Error error={error} />,
-          Init: () => <Init />,
-          Interrupted: (error) => <Error error={error} />,
-          Loading: () => <Loading />
+  return observer(() => {
+    React.useEffect(() => {
+      state.current["|>"](
+        onAdtElement("Init", () => {
+          next()
         })
       )
-    })
-  }
+    }, [])
+
+    return state.current["|>"](
+      matchTag({
+        Done: ({ value }) => <Done orgs={value} />,
+        Error: ({ error }) => <Error error={error} />,
+        Init: () => <Init />,
+        Interrupted: (error) => <Error error={error} />,
+        Loading: () => <Loading />
+      })
+    )
+  })
 })
 
 export interface Home extends _A<typeof makeHome> {}

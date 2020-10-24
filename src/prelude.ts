@@ -1,3 +1,5 @@
-import { patch } from "@effect-ts/core/Operators"
+import {} from "@effect-ts/core/Operators"
 
-patch()
+require("@effect-ts/core/Operators")
+
+export {}

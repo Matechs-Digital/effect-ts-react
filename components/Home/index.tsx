@@ -39,10 +39,6 @@ export const makeHome = Sy.gen(function* (_) {
     return <div>Error: {message}</div>
   }
 
-  function Interrupted() {
-    return <div>Interrupted</div>
-  }
-
   return {
     HomeView: observer(() => {
       React.useEffect(() => {
@@ -56,9 +52,22 @@ export const makeHome = Sy.gen(function* (_) {
       return state.current["|>"](
         matchTag({
           Done: ({ value }) => <Done orgs={value} />,
-          Error: ({ error }) => <Error message={JSON.stringify(error)} />,
+          Error: ({ error }) =>
+            error["|>"](
+              matchTag({
+                DecodeError: () => (
+                  <Error message={"something wrong with the payload decoding"} />
+                ),
+                HttpError: () => (
+                  <Error message={"something wrong with the http request"} />
+                ),
+                JsonError: () => (
+                  <Error message={"something wrong with the json decoding"} />
+                )
+              })
+            ),
           Init: () => <Init />,
-          Interrupted: () => <Interrupted />,
+          Interrupted: () => <Error message={"http request was interrupted"} />,
           Loading: () => <Loading />
         })
       )

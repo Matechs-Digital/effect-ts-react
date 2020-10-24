@@ -94,3 +94,9 @@ export interface HomeState extends _A<typeof makeHomeSate> {}
 export const HomeState = tag<HomeState>()
 
 export const LiveHomeState = Sl.fromSync(HomeState)(makeHomeSate)
+
+export type StateError<S extends State<any, any>> = [S] extends [
+  State<infer E, infer A>
+]
+  ? E
+  : never

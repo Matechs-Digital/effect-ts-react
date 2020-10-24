@@ -35,8 +35,19 @@ export const makeHome = Sy.gen(function* (_) {
     return <div>Loading</div>
   }
 
-  function Error({ message }: { message: string }) {
-    return <div>Error: {message}</div>
+  function Error({
+    error
+  }: {
+    error: State.StateError<typeof state> | State.Interrupted
+  }) {
+    return error["|>"](
+      matchTag({
+        DecodeError: () => <div>something wrong with the payload decoding</div>,
+        HttpError: () => <div>something wrong with the http request</div>,
+        JsonError: () => <div>something wrong with the json decoding</div>,
+        Interrupted: () => <div>the http request was interrupted</div>
+      })
+    )
   }
 
   return {
@@ -52,22 +63,9 @@ export const makeHome = Sy.gen(function* (_) {
       return state.current["|>"](
         matchTag({
           Done: ({ value }) => <Done orgs={value} />,
-          Error: ({ error }) =>
-            error["|>"](
-              matchTag({
-                DecodeError: () => (
-                  <Error message={"something wrong with the payload decoding"} />
-                ),
-                HttpError: () => (
-                  <Error message={"something wrong with the http request"} />
-                ),
-                JsonError: () => (
-                  <Error message={"something wrong with the json decoding"} />
-                )
-              })
-            ),
+          Error: ({ error }) => <Error error={error} />,
           Init: () => <Init />,
-          Interrupted: () => <Error message={"http request was interrupted"} />,
+          Interrupted: (error) => <Error error={error} />,
           Loading: () => <Loading />
         })
       )

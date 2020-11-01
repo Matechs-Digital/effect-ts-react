@@ -9,10 +9,10 @@
     "serve": "next start"
   },
   "dependencies": {
-    "@effect-ts/core": "^0.7.8",
-    "@effect-ts/monocle": "^0.6.8",
-    "@effect-ts/morphic": "^0.5.8",
-    "@effect-ts/system": "^0.5.3",
+    "@effect-ts/core": "^0.7.29",
+    "@effect-ts/monocle": "^0.6.30",
+    "@effect-ts/morphic": "^0.5.11",
+    "@effect-ts/system": "^0.5.22",
     "@prefresh/next": "^1.3.0",
     "@types/jest": "^26.0.10",
     "@types/node": "^14.11.8",

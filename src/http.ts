@@ -31,12 +31,10 @@ export const makeHttp = Sy.gen(function* (_) {
   return {
     getJson: (url: string) =>
       As.gen(function* (_) {
-        const res = yield* _(
-          As.fromPromiseMap((u) => new HttpError(u))(() => fetch(url))
-        )
+        const res = yield* _(As.promise((u) => new HttpError(u))(() => fetch(url)))
 
         const json: unknown = yield* _(
-          As.fromPromiseMap((u) => new JsonError(u))(() => res.json())
+          As.promise((u) => new JsonError(u))(() => res.json())
         )
 
         return json

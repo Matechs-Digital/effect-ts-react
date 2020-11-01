@@ -4,7 +4,6 @@ import { HomeState } from "@components/Home/state"
 import { runPromiseExit } from "@effect-ts/core/Async"
 import * as Sy from "@effect-ts/core/Sync"
 import * as Sl from "@effect-ts/core/Sync/Layer"
-import { observer } from "mobx-react"
 import type { NextPage } from "next"
 
 import { Home, LiveHome } from "../components/Home"
@@ -16,10 +15,10 @@ export const { HomePage, getOrg } = Sy.gen(function* (_) {
 
   const NextPage: NextPage<{
     initial: Parameters<typeof propagateExit>[0]
-  }> = observer(({ initial }) => {
+  }> = ({ initial }) => {
     propagateExit(initial)
     return <HomeComponent />
-  })
+  }
 
   return {
     HomePage: NextPage,
